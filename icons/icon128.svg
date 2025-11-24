@@ -1,0 +1,23 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="128" height="128" rx="24" fill="url(#gradient)"/>
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="128" y2="128">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Code brackets -->
+  <path d="M40 44L28 64L40 84" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M88 44L100 64L88 84" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Center debug icon -->
+  <circle cx="64" cy="64" r="12" fill="white"/>
+  <circle cx="64" cy="64" r="8" fill="#4f46e5"/>
+
+  <!-- Crosshair lines -->
+  <line x1="64" y1="32" x2="64" y2="48" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <line x1="64" y1="80" x2="64" y2="96" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <line x1="32" y1="64" x2="48" y2="64" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <line x1="80" y1="64" x2="96" y2="64" stroke="white" stroke-width="4" stroke-linecap="round"/>
+</svg>

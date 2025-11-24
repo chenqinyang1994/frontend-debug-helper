@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Debug Helper</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 头部工具栏 -->
+    <header class="header">
+      <div class="header-left">
+        <h1 class="title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+          Frontend Debug Helper
+        </h1>
+      </div>
+      <div class="header-right">
+        <button id="clearBtn" class="btn btn-secondary" title="清空记录">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+          </svg>
+          清空
+        </button>
+        <button id="exportBtn" class="btn btn-secondary" title="导出数据">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          导出
+        </button>
+        <button id="pauseBtn" class="btn btn-primary" title="暂停/继续监控">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="6" y="4" width="4" height="16"/>
+            <rect x="14" y="4" width="4" height="16"/>
+          </svg>
+          <span id="pauseBtnText">暂停</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 功能标签页 -->
+    <nav class="tabs">
+      <button class="tab active" data-tab="class-changes">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="16 18 22 12 16 6"/>
+          <polyline points="8 6 2 12 8 18"/>
+        </svg>
+        Class 变化
+        <span class="badge" id="classCount">0</span>
+      </button>
+      <button class="tab" data-tab="style-changes">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        样式变化
+        <span class="badge" id="styleCount">0</span>
+      </button>
+      <button class="tab" data-tab="attribute-changes">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        属性变化
+        <span class="badge" id="attrCount">0</span>
+      </button>
+      <button class="tab" data-tab="event-listeners">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+        事件监听
+        <span class="badge" id="eventCount">0</span>
+      </button>
+      <button class="tab" data-tab="performance">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+        性能监控
+      </button>
+    </nav>
+
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="status-item">
+        <span class="status-label">监控状态:</span>
+        <span id="monitorStatus" class="status-value status-active">运行中</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">选中元素:</span>
+        <span id="selectedElement" class="status-value">无</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">记录总数:</span>
+        <span id="totalRecords" class="status-value">0</span>
+      </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <main class="content">
+      <!-- Class变化面板 -->
+      <div class="tab-content active" id="class-changes">
+        <div class="empty-state" id="classEmpty">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          <p>选择Elements面板中的元素，hover时的class变化将在这里显示</p>
+          <small>提示：在Elements面板点击选择元素，然后在页面上hover该元素</small>
+        </div>
+        <div class="records-list" id="classRecords"></div>
+      </div>
+
+      <!-- 样式变化面板 -->
+      <div class="tab-content" id="style-changes">
+        <div class="empty-state" id="styleEmpty">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <p>元素的样式变化将在这里显示</p>
+          <small>包括computed style、inline style等</small>
+        </div>
+        <div class="records-list" id="styleRecords"></div>
+      </div>
+
+      <!-- 属性变化面板 -->
+      <div class="tab-content" id="attribute-changes">
+        <div class="empty-state" id="attrEmpty">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <p>元素的属性变化将在这里显示</p>
+          <small>包括data-*、aria-*等所有属性</small>
+        </div>
+        <div class="records-list" id="attrRecords"></div>
+      </div>
+
+      <!-- 事件监听面板 -->
+      <div class="tab-content" id="event-listeners">
+        <div class="empty-state" id="eventEmpty">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <p>元素上的事件监听器将在这里显示</p>
+          <small>点击事件可以查看监听器详情</small>
+        </div>
+        <div class="records-list" id="eventRecords"></div>
+      </div>
+
+      <!-- 性能监控面板 -->
+      <div class="tab-content" id="performance">
+        <div class="performance-grid">
+          <div class="performance-card">
+            <h3>重排/重绘统计</h3>
+            <div class="performance-stats">
+              <div class="stat-item">
+                <span class="stat-label">重排次数:</span>
+                <span class="stat-value" id="reflowCount">0</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">重绘次数:</span>
+                <span class="stat-value" id="repaintCount">0</span>
+              </div>
+            </div>
+          </div>
+          <div class="performance-card">
+            <h3>变化统计</h3>
+            <div class="performance-stats">
+              <div class="stat-item">
+                <span class="stat-label">DOM变化:</span>
+                <span class="stat-value" id="domChangeCount">0</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">样式变化:</span>
+                <span class="stat-value" id="styleChangeCount">0</span>
+              </div>
+            </div>
+          </div>
+          <div class="performance-card">
+            <h3>监控时长</h3>
+            <div class="performance-stats">
+              <div class="stat-item">
+                <span class="stat-label">运行时间:</span>
+                <span class="stat-value" id="runningTime">00:00:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="panel.js"></script>
+</body>
+</html>
