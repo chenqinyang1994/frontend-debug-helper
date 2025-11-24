@@ -7,7 +7,7 @@
 ![Chrome](https://img.shields.io/badge/Chrome-DevTools-orange.svg)
 ![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)
 
-**专业的Chrome前端调试插件 - 追踪DOM变化、样式变化、事件监听**
+**专业的 Chrome 前端调试插件 - 追踪 DOM 变化、样式变化、事件监听**
 
 [快速开始](#-快速开始) • [功能特性](#-功能特性) • [使用指南](#-使用指南) • [故障排查](#-故障排查) • [文档](#-文档)
 
@@ -19,16 +19,16 @@
 
 ## 🌟 项目简介
 
-Frontend Debug Helper 是一款专为前端开发者设计的Chrome DevTools扩展，能够实时追踪和记录DOM元素的动态变化，特别是hover时的class变化、样式变化等，让前端调试变得简单高效。
+Frontend Debug Helper 是一款专为前端开发者设计的 Chrome DevTools 扩展，能够实时追踪和记录 DOM 元素的动态变化，特别是 hover 时的 class 变化、样式变化等，让前端调试变得简单高效。
 
 ### ✨ 为什么选择它？
 
-- 🎯 **精准追踪** - 实时捕获hover时的class增删变化
-- 🎨 **样式监控** - 自动记录12个关键CSS属性变化
+- 🎯 **精准追踪** - 实时捕获 hover 时的 class 增删变化
+- 🎨 **样式监控** - 自动记录 12 个关键 CSS 属性变化
 - 📊 **可视化展示** - 绿色=新增，红色=删除，一目了然
 - ⚡ **零学习成本** - 选择元素 → Hover → 查看结果
-- 💾 **数据导出** - 一键导出JSON，便于分享和分析
-- 🚀 **性能优异** - CPU占用<1%，内存安全无泄漏
+- 💾 **数据导出** - 一键导出 JSON，便于分享和分析
+- 🚀 **性能优异** - CPU 占用<1%，内存安全无泄漏
 
 ---
 
@@ -39,12 +39,14 @@ Frontend Debug Helper 是一款专为前端开发者设计的Chrome DevTools扩�
 #### 方法一：从源码安装（推荐）
 
 1. **克隆或下载项目**
+
    ```bash
-   git clone https://github.com/your-username/frontend-debug-helper.git
+   git clone https://github.com/chenqinyang1994/frontend-debug-helper.git
    # 或下载ZIP并解压
    ```
 
-2. **加载插件到Chrome**
+2. **加载插件到 Chrome**
+
    ```
    1. 打开 Chrome 浏览器
    2. 访问 chrome://extensions/
@@ -56,11 +58,11 @@ Frontend Debug Helper 是一款专为前端开发者设计的Chrome DevTools扩�
 
 3. **开始使用**
    - 点击工具栏的插件图标查看使用说明
-   - 或按 F12 打开DevTools，找到"Debug Helper"标签
+   - 或按 F12 打开 DevTools，找到"Debug Helper"标签
 
-#### 方法二：从Chrome应用商店安装
+#### 方法二：从 Chrome 应用商店安装
 
-> 🚧 即将上线Chrome Web Store，敬请期待！
+> 🚧 即将上线 Chrome Web Store，敬请期待！
 
 ---
 
@@ -91,6 +93,7 @@ Debug Helper 是一个 DevTools 扩展，
 ### 🎯 详细步骤
 
 1. **打开网页**
+
    ```
    访问任意网站，例如：
    - https://ant.design/components/button-cn
@@ -98,26 +101,30 @@ Debug Helper 是一个 DevTools 扩展，
    - 你自己的项目
    ```
 
-2. **打开DevTools**
+2. **打开 DevTools**
+
    ```
    按 F12 (Windows/Linux)
    或 Cmd+Option+I (macOS)
    ```
 
-3. **找到Debug Helper标签**
+3. **找到 Debug Helper 标签**
+
    ```
    在DevTools顶部标签栏
    Elements | Console | Sources | ... | Debug Helper ⭐
    ```
 
 4. **选择要监控的元素**
+
    ```
    - 切换到 Elements 标签
    - 点击选择器工具（Cmd+Shift+C）
    - 在页面上点击一个按钮或其他元素
    ```
 
-5. **触发hover事件**
+5. **触发 hover 事件**
+
    ```
    回到页面
    将鼠标hover到选中的元素上
@@ -138,16 +145,18 @@ Debug Helper 是一个 DevTools 扩展，
 
 ### 1️⃣ Class 变化追踪
 
-实时监控DOM元素在hover进入/离开时的class变化
+实时监控 DOM 元素在 hover 进入/离开时的 class 变化
 
 **监控内容：**
-- ✅ 新增的class（绿色高亮）
-- ✅ 删除的class（红色高亮）
-- ✅ 当前完整的class列表
+
+- ✅ 新增的 class（绿色高亮）
+- ✅ 删除的 class（红色高亮）
+- ✅ 当前完整的 class 列表
 - ✅ 精确到毫秒的时间戳
 - ✅ 元素选择器信息
 
 **使用场景：**
+
 ```javascript
 // 场景：调试Ant Design按钮hover效果
 // 你会看到：
@@ -161,9 +170,10 @@ Debug Helper 是一个 DevTools 扩展，
 
 ### 2️⃣ 样式变化监控
 
-追踪元素computed style的变化，显示具体CSS属性的改变
+追踪元素 computed style 的变化，显示具体 CSS 属性的改变
 
 **监控的属性：**
+
 - `display`, `visibility`, `opacity`
 - `color`, `background-color`
 - `border`, `padding`, `margin`
@@ -171,6 +181,7 @@ Debug Helper 是一个 DevTools 扩展，
 - `transform`, `transition`, `animation`
 
 **显示格式：**
+
 ```
 color: rgb(0, 0, 0) → rgb(66, 133, 244)
 opacity: 1 → 0.8
@@ -181,14 +192,16 @@ background-color: transparent → rgba(0, 0, 0, 0.1)
 
 ### 3️⃣ 属性变化记录
 
-监控所有DOM属性的变化，包括data-*、aria-*等
+监控所有 DOM 属性的变化，包括 data-*、aria-*等
 
 **变化类型：**
+
 - 🟢 新增
 - 🔴 删除
 - 🟡 修改
 
 **使用场景：**
+
 ```html
 <!-- Tab切换示例 -->
 <div aria-selected="false">标签1</div>
@@ -196,8 +209,7 @@ background-color: transparent → rgba(0, 0, 0, 0.1)
 <div aria-selected="true">标签1</div>
 
 <!-- 插件显示 -->
-属性名: aria-selected
-false → true
+属性名: aria-selected false → true
 ```
 
 ---
@@ -207,6 +219,7 @@ false → true
 列出元素上绑定的所有事件监听器
 
 **支持的事件：**
+
 - 鼠标事件：click, mouseenter, mouseleave...
 - 键盘事件：keydown, keyup, keypress
 - 表单事件：focus, blur, change, input
@@ -220,7 +233,8 @@ false → true
 实时显示监控统计和运行状态
 
 **监控指标：**
-- DOM变化总数
+
+- DOM 变化总数
 - 样式变化总数
 - 属性变化总数
 - 监控运行时长（HH:MM:SS）
@@ -229,9 +243,10 @@ false → true
 
 ### 6️⃣ 数据导出功能
 
-一键导出所有监控数据为JSON格式
+一键导出所有监控数据为 JSON 格式
 
 **导出内容：**
+
 ```json
 {
   "exportTime": "2024-11-24T13:23:45.678Z",
@@ -252,13 +267,14 @@ false → true
 
 ---
 
-### 7️⃣ 智能Popup弹窗
+### 7️⃣ 智能 Popup 弹窗
 
 点击工具栏图标显示精美的使用说明
 
 **特色：**
+
 - 🎨 紫色渐变背景 + 毛玻璃效果
-- 📖 清晰的5步使用指南
+- 📖 清晰的 5 步使用指南
 - 💡 温馨提示说明
 - 🚀 快速操作按钮
 - 🔧 故障排查链接
@@ -268,17 +284,19 @@ false → true
 
 ## 🎯 实战案例
 
-### 案例1：调试Ant Design按钮
+### 案例 1：调试 Ant Design 按钮
 
-**目标：** 了解Ant Design按钮的hover效果如何实现
+**目标：** 了解 Ant Design 按钮的 hover 效果如何实现
 
 **步骤：**
+
 1. 访问 https://ant.design/components/button-cn
 2. 选中页面上的"主要按钮"
-3. Hover该按钮
-4. 查看Debug Helper面板
+3. Hover 该按钮
+4. 查看 Debug Helper 面板
 
 **结果：**
+
 ```
 [Hover 进入] 21:23:45.678
 元素: button.ant-btn.ant-btn-primary
@@ -291,20 +309,22 @@ false → true
 当前: ant-btn ant-btn-primary
 ```
 
-**收获：** 立即知道Ant Design通过添加/删除 `ant-btn-hover` class实现hover效果！
+**收获：** 立即知道 Ant Design 通过添加/删除 `ant-btn-hover` class 实现 hover 效果！
 
 ---
 
-### 案例2：自定义组件样式覆盖
+### 案例 2：自定义组件样式覆盖
 
-**目标：** 改变Element UI按钮的hover背景色
+**目标：** 改变 Element UI 按钮的 hover 背景色
 
 **步骤：**
-1. 使用插件查看hover时的class变化
+
+1. 使用插件查看 hover 时的 class 变化
 2. 发现添加了 `el-button--primary` 和 `is-hover`
 3. 编写覆盖样式
 
 **代码：**
+
 ```css
 .el-button--primary.is-hover {
   background-color: #ff6b6b !important;
@@ -312,42 +332,45 @@ false → true
 }
 ```
 
-**效果：** hover时背景色变为自定义的红色！
+**效果：** hover 时背景色变为自定义的红色！
 
 ---
 
-### 案例3：性能优化
+### 案例 3：性能优化
 
-**问题：** 页面卡顿，怀疑是频繁的DOM操作
+**问题：** 页面卡顿，怀疑是频繁的 DOM 操作
 
 **调试步骤：**
+
 1. 打开"性能监控"标签
 2. 执行卡顿的操作
 3. 查看统计数据
 
 **发现：**
+
 ```
 DOM变化: 156次 (10秒内)
 平均每秒: 15次变化
 ```
 
 **优化方案：**
+
 ```javascript
 // 优化前：频繁切换class
-element.classList.toggle('loading'); // 每100ms执行
+element.classList.toggle("loading"); // 每100ms执行
 
 // 优化后：使用CSS transition
-element.style.transition = 'opacity 0.3s';
-element.style.opacity = '0.5';
+element.style.transition = "opacity 0.3s";
+element.style.opacity = "0.5";
 ```
 
-**结果：** DOM变化减少到2次，页面流畅度提升80%！
+**结果：** DOM 变化减少到 2 次，页面流畅度提升 80%！
 
 ---
 
 ## 🎨 界面预览
 
-### DevTools面板
+### DevTools 面板
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -379,7 +402,7 @@ element.style.opacity = '0.5';
 └─────────────────────────────────────────────┘
 ```
 
-### Popup弹窗
+### Popup 弹窗
 
 ```
 ┌──────────────────────────────────┐
@@ -433,18 +456,18 @@ element.style.opacity = '0.5';
 
 ### 核心技术
 
-- **Manifest V3** - 最新Chrome扩展规范
-- **MutationObserver** - 高效的DOM变化监控
+- **Manifest V3** - 最新 Chrome 扩展规范
+- **MutationObserver** - 高效的 DOM 变化监控
 - **WeakMap** - 防止内存泄漏的元素状态存储
-- **chrome.devtools API** - 与DevTools深度集成
-- **50ms延迟捕获** - 确保捕获异步添加的class
+- **chrome.devtools API** - 与 DevTools 深度集成
+- **50ms 延迟捕获** - 确保捕获异步添加的 class
 
 ### 性能优化
 
-- ✅ CPU占用 < 1%
+- ✅ CPU 占用 < 1%
 - ✅ 内存安全，无泄漏
-- ✅ 只保留最新50条记录
-- ✅ WeakMap自动清理
+- ✅ 只保留最新 50 条记录
+- ✅ WeakMap 自动清理
 - ✅ 长时间运行稳定
 
 ---
@@ -453,16 +476,16 @@ element.style.opacity = '0.5';
 
 ### 完整文档列表
 
-| 文档 | 说明 |
-|------|------|
-| [README.md](./README.md) | 项目主文档（本文件） |
-| [INSTALL.md](./INSTALL.md) | 详细安装指南 |
-| [QUICKSTART.md](./QUICKSTART.md) | 5分钟快速上手 |
-| [USER_GUIDE.md](./USER_GUIDE.md) | 完整使用手册 |
-| [FEATURES.md](./FEATURES.md) | 功能详解 |
-| [DEVELOPMENT.md](./DEVELOPMENT.md) | 开发者文档 |
-| [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) | 故障排查指南 |
-| [POPUP_FEATURE.md](./POPUP_FEATURE.md) | Popup功能说明 |
+| 文档                                       | 说明                 |
+| ------------------------------------------ | -------------------- |
+| [README.md](./README.md)                   | 项目主文档（本文件） |
+| [INSTALL.md](./INSTALL.md)                 | 详细安装指南         |
+| [QUICKSTART.md](./QUICKSTART.md)           | 5 分钟快速上手       |
+| [USER_GUIDE.md](./USER_GUIDE.md)           | 完整使用手册         |
+| [FEATURES.md](./FEATURES.md)               | 功能详解             |
+| [DEVELOPMENT.md](./DEVELOPMENT.md)         | 开发者文档           |
+| [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) | 故障排查指南         |
+| [POPUP_FEATURE.md](./POPUP_FEATURE.md)     | Popup 功能说明       |
 
 ### 快速链接
 
@@ -476,18 +499,20 @@ element.style.opacity = '0.5';
 
 ## ❓ 常见问题
 
-### Q: 为什么看不到class变化？
+### Q: 为什么看不到 class 变化？
 
 **A:** 请确保：
-1. ✅ 已在Elements面板选中元素（显示为 `== $0`）
-2. ✅ 切换回页面hover该元素
-3. ✅ 该元素确实有class变化（某些元素使用`:hover`伪类）
+
+1. ✅ 已在 Elements 面板选中元素（显示为 `== $0`）
+2. ✅ 切换回页面 hover 该元素
+3. ✅ 该元素确实有 class 变化（某些元素使用`:hover`伪类）
 
 ---
 
 ### Q: 如何知道插件是否正常工作？
 
-**A:** 打开Console标签，应该看到：
+**A:** 打开 Console 标签，应该看到：
+
 ```
 ✅ Content script injected successfully
 ✅ Content script initialized...
@@ -500,7 +525,8 @@ element.style.opacity = '0.5';
 ### Q: 性能影响如何？
 
 **A:**
-- CPU占用 < 1%
+
+- CPU 占用 < 1%
 - 内存占用 ~5MB
 - 对页面几乎无影响
 - 长时间运行稳定
@@ -510,18 +536,19 @@ element.style.opacity = '0.5';
 ### Q: 支持哪些浏览器？
 
 **A:**
+
 - ✅ Chrome（推荐）
-- ✅ Edge (Chromium版本)
+- ✅ Edge (Chromium 版本)
 - ✅ Brave
 - ✅ Opera
-- ❌ Firefox（不同的扩展API）
+- ❌ Firefox（不同的扩展 API）
 - ❌ Safari（不同的扩展系统）
 
 ---
 
 ### Q: 数据存储在哪里？
 
-**A:** 所有数据都存储在内存中，不会持久化到硬盘。关闭DevTools后数据会清空。可以使用"导出"功能保存数据。
+**A:** 所有数据都存储在内存中，不会持久化到硬盘。关闭 DevTools 后数据会清空。可以使用"导出"功能保存数据。
 
 ---
 
@@ -531,7 +558,7 @@ element.style.opacity = '0.5';
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-username/frontend-debug-helper.git
+git clone https://github.com/chenqinyang1994/frontend-debug-helper.git
 cd frontend-debug-helper
 
 # 加载到Chrome
@@ -576,20 +603,20 @@ frontend-debug-helper/
 
 ## 🤝 贡献
 
-欢迎提交Issue和Pull Request！
+欢迎提交 Issue 和 Pull Request！
 
 ### 贡献指南
 
-1. Fork本项目
+1. Fork 本项目
 2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
 3. 提交代码 (`git commit -m 'Add some AmazingFeature'`)
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 提交Pull Request
+5. 提交 Pull Request
 
 ### 代码规范
 
-- 使用ES6+语法
-- 遵循Airbnb JavaScript Style Guide
+- 使用 ES6+语法
+- 遵循 Airbnb JavaScript Style Guide
 - 添加必要的注释
 - 保持代码整洁
 
@@ -618,6 +645,7 @@ copies of the Software...
 感谢所有为前端开发工具生态做出贡献的开发者！
 
 特别感谢：
+
 - Chrome DevTools Team
 - React DevTools
 - Vue DevTools
@@ -627,29 +655,32 @@ copies of the Software...
 
 ## 📞 联系方式
 
-- 🐛 **Bug反馈**：[提交Issue](https://github.com/your-username/frontend-debug-helper/issues)
-- 💡 **功能建议**：[提交Feature Request](https://github.com/your-username/frontend-debug-helper/issues/new)
+- 🐛 **Bug 反馈**：[提交 Issue](https://github.com/chenqinyang1994/frontend-debug-helper/issues)
+- 💡 **功能建议**：[提交 Feature Request](https://github.com/chenqinyang1994/frontend-debug-helper/issues/new)
 - 📧 **邮件联系**：your-email@example.com
-- 💬 **讨论交流**：[GitHub Discussions](https://github.com/your-username/frontend-debug-helper/discussions)
+- 💬 **讨论交流**：[GitHub Discussions](https://github.com/chenqinyang1994/frontend-debug-helper/discussions)
 
 ---
 
 ## 🗺️ 路线图
 
 ### v1.1 (计划中)
-- [ ] CSS动画/过渡追踪
+
+- [ ] CSS 动画/过渡追踪
 - [ ] 录制回放功能
 - [ ] 快照对比
 - [ ] 自定义监控规则
 
 ### v2.0 (规划中)
+
 - [ ] 网络请求监控
-- [ ] LocalStorage/SessionStorage追踪
+- [ ] LocalStorage/SessionStorage 追踪
 - [ ] 性能瓶颈自动分析
-- [ ] AI辅助优化建议
+- [ ] AI 辅助优化建议
 
 ### v3.0 (未来)
-- [ ] Vue/React DevTools集成
+
+- [ ] Vue/React DevTools 集成
 - [ ] 团队协作功能
 - [ ] 云端数据同步
 
@@ -657,16 +688,16 @@ copies of the Software...
 
 ## 📊 项目统计
 
-- **代码量**：约1,600行生产级代码
-- **文档量**：约20,000字完整文档
-- **功能数**：15个核心功能
+- **代码量**：约 1,600 行生产级代码
+- **文档量**：约 20,000 字完整文档
+- **功能数**：15 个核心功能
 - **支持平台**：macOS / Windows / Linux
 
 ---
 
 <div align="center">
 
-## ⭐ 如果觉得有用，请给个Star支持一下！⭐
+## ⭐ 如果觉得有用，请给个 Star 支持一下！⭐
 
 **Made with ❤️ by Frontend Developers, for Frontend Developers**
 
